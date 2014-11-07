@@ -172,31 +172,32 @@
 		}
 
 		$("#slotMachineButtonStop").click(function(){
-			var number = 0;
-			do{
-				number = produceNumber();
-			}while(!checkNumber(number));
+			if(machine6.isRunning()){
+				var number = 0;
+				do{
+					number = produceNumber();
+				}while(!checkNumber(number));
 
-			$(".lucky-dog").append('<div class="lucky-dog-item">'+number+'</div>');
+				$(".lucky-dog").append('<div class="lucky-dog-item">'+number+'</div>');
 
-			var single_digit = number%10;
+				var single_digit = number%10;
 
-			var tens_digit = (Math.floor(number/10))%10;
+				var tens_digit = (Math.floor(number/10))%10;
 
-			var hundred_digit = (Math.floor(number/100))%10;
+				var hundred_digit = (Math.floor(number/100))%10;
 
-			machine4.setNumber(hundred_digit);
+				machine4.setNumber(hundred_digit);
 
-			machine5.setNumber(tens_digit);
+				machine5.setNumber(tens_digit);
 
-			machine6.setNumber(single_digit);
+				machine6.setNumber(single_digit);
 			
-			machine4.stop(true);
+				machine4.stop(true);
+	
+				setTimeout(function(){machine5.stop(true);},500);
 
-			setTimeout(function(){machine5.stop(true);},500);
-
-			setTimeout(function(){machine6.stop(true);},1000);
-
+				setTimeout(function(){machine6.stop(true);},1000);
+			}
 		});
 
 		$("#grumble1").grumble({
