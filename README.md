@@ -3,7 +3,7 @@ lottery
 <html>
 一个基于js,css,bootstrap,slotmachine,jq的抽奖小程序，对slotmachine进行了部分修改以便传入参数，界面简洁美观
 <br/>
-<a href="http://harveyprince.github.io/lottery/">演示</a>
+<a href="http://harveyprince.github.io/lottery/"><h1>演示</h1></a>
 <br/>
 <h2>关于Slotmachine说明：</h2>
 <br/>
