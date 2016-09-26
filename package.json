@@ -1,0 +1,23 @@
+{
+  "name": "lottery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harveyprince/lottery.git"
+  },
+  "author": "harveyprince",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harveyprince/lottery/issues"
+  },
+  "homepage": "https://github.com/harveyprince/lottery#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "requirejs": "^2.3.2"
+  }
+}
