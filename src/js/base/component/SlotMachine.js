@@ -20,15 +20,13 @@ define([
 
         this.initialize = function(options){
             _options = $.extend(_options, options);
-            //
-            console.log('_options',_options);
             
             $wheels = Array(_options.width).fill(0).map(t=>{
                 let wheel = new Wheel(context);
                 wheel.initialize();
                 return wheel;
             });
-            console.log('$wheels',$wheels);
+
             self.createDOM();
 
             if (_options.tool) {
@@ -54,7 +52,7 @@ define([
         }
 
         this.isRunning = function(){
-            return $wheels.every(t=>t.isRunning());
+            return $wheels.some(t=>t.isRunning());
         }
 
         this.startRoll = function(){
@@ -93,7 +91,7 @@ define([
                 const num = parseInt(s_num[idx]);
                 setTimeout(()=>{
                     wheel.stopRollWithNumber(num);
-                }, 1000*idx);
+                }, 700*idx);
                 
             })
         }

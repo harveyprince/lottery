@@ -4,10 +4,10 @@ define([
 ], function($, Context) {
     console.log('worked');
     $.fn.extend({
-        lottery: function() {
+        lottery: function(options) {
             var context = new Context(this);
-            context.initialize();
-            return this;
+            context.initialize(options);
+            return context;
         }
     });
 });

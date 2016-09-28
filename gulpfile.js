@@ -33,7 +33,7 @@ const config = {
             }
             return contents;
         },
-        excludeShallow: ['jquery', 'app'],
+        excludeShallow: ['jquery'],
         paths: {
             jquery: 'empty:'
         },
@@ -66,7 +66,12 @@ gulp.task('styles', ()=>{
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('serve', ['styles', 'rjs'], () => {
+gulp.task('image', ()=>{
+    return gulp.src('src/icons/*')
+        .pipe(gulp.dest('dist/icons/'));
+});
+
+gulp.task('serve', ['styles', 'rjs', 'image'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -85,5 +90,6 @@ gulp.task('serve', ['styles', 'rjs'], () => {
   ]).on('change', reload);
   gulp.watch('src/style/**/*.scss', ['styles']);
   gulp.watch('src/js/**/*.js', ['rjs']);
+  gulp.watch('src/icons/**/*', ['image']);
 
 });

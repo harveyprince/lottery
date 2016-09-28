@@ -8,10 +8,15 @@ define([
 
         this.slot = null;
 
+        var _min = 0;
+        var _max = 999;
+
         this.initialize = function(options){
             self.slot = new SlotMachine(self);
             self.slot.initialize(options);
-
+            if (options && options.width) {
+                _max = 10*options.width - 1;
+            }
             self.slot.render($node);
         }
 
@@ -20,7 +25,12 @@ define([
         }
 
         this.stop = function(){
-            self.slot.stopRollWithNumber(12);
+            var number = _min + Math.floor(Math.random()*(_max-_min+1));
+            self.slot.stopRollWithNumber(number);
+        }
+
+        this.stopWithNumber = function(number){
+            self.slot.stopRollWithNumber(number);
         }
 
     };
