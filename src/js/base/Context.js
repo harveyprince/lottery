@@ -6,21 +6,21 @@ define([
         
         var self = this;
 
-        var _slot = null;
+        this.slot = null;
 
         this.initialize = function(options){
-            _slot = new SlotMachine(self);
-            _slot.initialize(options);
+            self.slot = new SlotMachine(self);
+            self.slot.initialize(options);
 
-            _slot.render($node);
+            self.slot.render($node);
         }
 
         this.start = function(){
-            _slot.startRoll();
+            self.slot.startRoll();
         }
 
         this.stop = function(){
-            _slot.stopRollWithNumber();
+            self.slot.stopRollWithNumber(12);
         }
 
     };

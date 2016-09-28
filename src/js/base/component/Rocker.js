@@ -14,10 +14,12 @@ define([
             '开始',//name
             'begin',//tag
             function(){//click
-                context.start();
-                console.log('begin');
-                _isRunning = true;
-                self.renderButton();
+                if (!context.slot.isRunning()) {
+                    context.start();
+                    console.log('begin');
+                    _isRunning = true;
+                    self.renderButton();
+                }
             }
         ];
 
@@ -25,10 +27,12 @@ define([
             '结束',//name
             'end',//tag
             function(){//click
-                context.stop();
-                console.log('end');
-                _isRunning = false;
-                self.renderButton();
+                if (context.slot.isRunning()) {
+                    context.stop();
+                    console.log('end');
+                    _isRunning = false;
+                    self.renderButton();
+                }
             }
         ];
 

@@ -21,7 +21,6 @@ define([
         }
 
         this.render = function($parent){
-            console.log('number','render');
             $parent.append(_dom);
             return self;
         }
@@ -34,6 +33,10 @@ define([
         this.setTop = function(top){
             _dom.css('margin-top',top);
             return self;
+        }
+
+        this.check = function(num){
+            return _number === num;
         }
 
         /**

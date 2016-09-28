@@ -12,6 +12,7 @@ define([
         var _dom = null;
         var _isRunning = false;
         var _toStop = false;
+        var _stopNum = -1;
 
         //数字集指针
         var _pos = 0;
@@ -53,7 +54,8 @@ define([
             var now = $numbers[pos];
             var next = $numbers[next_pos()];
             next.setTop(_dom.height()).render(_dom);
-            if (_toStop) {
+            if (_toStop && (_stopNum === -1 || next.check(_stopNum))) {
+                _dom.removeClass('rolling');
                 now.animateUp(delay, Setting.animation.TO_TOP, true, function(){
                     prev.unrender();
                 });
@@ -61,8 +63,11 @@ define([
                     _pos = next_pos();
                     _isRunning = false;
                     _toStop = false;
+                    _stopNum = -1;
+                    now.unrender();
+                    _dom.removeClass('gradient');
+                    
                 });
-                _dom.removeClass('gradient');
                 return ;
             }
             now.animateUp(delay, Setting.animation.TO_TOP, false, function(){
@@ -75,9 +80,12 @@ define([
             
         };
 
+        this.isRunning = function(){
+            return _isRunning;
+        }
+
         this.startRoll = function(delay){
             //number一个接一个从底向上滑动
-            console.log('wheel','roll');
             _dom.addClass('gradient');
             if (_isRunning) {
                 return ;
@@ -87,11 +95,20 @@ define([
             _dom.addClass('rolling');
         }
 
+        this.stopRoll = function(){
+            if (_isRunning) {
+                _stopNum = -1;
+                _toStop = true;
+            }
+            
+        }
+
         this.stopRollWithNumber = function(stop_number){
             //stop with number
-            console.log('wheel','stop roll');
-            _toStop = true;
-            _dom.removeClass('rolling');
+            if (_isRunning) {
+                _stopNum = stop_number;
+                _toStop = true;
+            }
         }
 
         this.render = function($parent){
