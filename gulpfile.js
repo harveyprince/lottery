@@ -93,3 +93,5 @@ gulp.task('serve', ['styles', 'rjs', 'image'], () => {
   gulp.watch('src/icons/**/*', ['image']);
 
 });
+
+gulp.task('build', ['styles', 'rjs', 'image']);

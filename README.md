@@ -6,6 +6,11 @@ jq plugin version
 
 [演示](http://harveyprince.github.io/lottery/)
 
+#编译项目
+	npm install
+	bower install
+	gulp build
+
 #API
 ---
 项目依赖`JQuery`
