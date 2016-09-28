@@ -43,9 +43,9 @@ jq plugin version
 ###stop()
 	$lottery.stop();
 	停止，随机数
-###stopWithNumber()
-	$lottery.stopWithNumber();
-	以给定的数值停止
+###stopWithNumber(num)
+	$lottery.stopWithNumber(num);
+	以给定的数值num停止（要符合位数限制
 	用这个方法就可以个人随意设置数值范围，随机的逻辑，基本上没有扩展插件的必要
 
 ##slot-machine
