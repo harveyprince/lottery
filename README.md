@@ -30,6 +30,8 @@ jq plugin version
 	    tool: true,//是否使用插件自带控件（开始停止
 	    delay: 100 //轮转的速度延迟
 	});
+	也可以缺省使用默认设置
+	var $lottery = $('#root').lottery();
 
 然后可以使用`$lottery`对象进行一系列操作
 ##context
