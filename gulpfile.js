@@ -84,5 +84,6 @@ gulp.task('serve', ['styles', 'rjs'], () => {
     'dist/**/*'
   ]).on('change', reload);
   gulp.watch('src/style/**/*.scss', ['styles']);
+  gulp.watch('src/js/**/*.js', ['rjs']);
 
 });
