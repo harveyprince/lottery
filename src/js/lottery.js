@@ -1,13 +1,11 @@
 define([
     'jquery',
-    './module/number'
-], function($, Number) {
+    './base/Context'
+], function($, Context) {
     console.log('worked');
     $.fn.extend({
         lottery: function() {
-            console.log('lottery');
-            var number = new Number();
-            number.talk();
+            
             return this;
         }
     });

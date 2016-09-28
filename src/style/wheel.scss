@@ -1,0 +1,17 @@
+#wheel {
+    color: red;
+}
+.wheel {
+    
+    @import 'number';
+
+	width:100px;
+	height:100px;
+	background-size: 100px;
+    display: inline-block;
+    
+}
+
+.wheel.rolling {
+    filter: blur(5px);
+}
