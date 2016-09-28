@@ -15,6 +15,10 @@ jq plugin version
 ---
 项目依赖`JQuery`
 
+	样式
+	<link rel="stylesheet" type="text/css" href="lottery.css"  />
+
+	脚本
 	<script src='bower_components/jquery/dist/jquery.js'></script>
 	<script src='lottery.js'></script>
 
