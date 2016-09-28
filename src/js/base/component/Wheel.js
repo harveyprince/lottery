@@ -23,6 +23,10 @@ define([
             return number;
         });
 
+        var prev_pos = function(){
+            return (_pos - 1 + 10)%10;
+        };
+
         var next_pos = function(){
             return (_pos + 1)%10;
         };
@@ -44,20 +48,27 @@ define([
         }
 
         var _roll = function(delay, pos){
-            if (_toStop) {
-                _isRunning = false;
-                _toStop = false;
-                _dom.removeClass('gradient');
-                return ;
-            }
             _isRunning = true;
+            var prev = $numbers[prev_pos()];
             var now = $numbers[pos];
             var next = $numbers[next_pos()];
             next.setTop(_dom.height()).render(_dom);
-            now.animateUpToTop(delay, function(){
-                now.unrender();
+            if (_toStop) {
+                now.animateUp(delay, Setting.animation.TO_TOP, true, function(){
+                    prev.unrender();
+                });
+                next.animateUp(delay, Setting.animation.FROM_BOTTOM, true, function(){
+                    _pos = next_pos();
+                    _isRunning = false;
+                    _toStop = false;
+                });
+                _dom.removeClass('gradient');
+                return ;
+            }
+            now.animateUp(delay, Setting.animation.TO_TOP, false, function(){
+                prev.unrender();
             });
-            next.animateUpFromBottom(delay, function(){
+            next.animateUp(delay, Setting.animation.FROM_BOTTOM, false, function(){
                 _pos = next_pos();
                 _roll(delay, _pos);
             });
